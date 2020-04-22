@@ -1,0 +1,51 @@
+image: gradle:jdk8
+
+before_script:
+  - wget -q https://courses.cs.washington.edu/courses/cse373/18au/files/hw_scripts/hw5-build-gradle -O build.gradle
+
+stages:
+  - compile
+  - test
+
+
+Compile:
+  stage: compile
+  script:
+    - wget -q https://courses.cs.washington.edu/courses/cse373/18au/files/hw_scripts/compile.sh
+    - sh compile.sh
+  tags:
+    - compile
+
+
+StyleCheck:
+  stage: test
+  script:
+    - wget -q https://courses.cs.washington.edu/courses/cse373/18au/files/hw_scripts/stylecheck.sh
+    - sh stylecheck.sh
+  tags:
+    - stylecheck
+
+DataStructures:
+  stage: test
+  script:
+    - wget -q https://courses.cs.washington.edu/courses/cse373/18au/files/hw_scripts/hw5-datastructures.sh
+    - sh hw5-datastructures.sh
+  tags:
+    - datastructures
+
+
+Part1:
+  stage: test
+  script:
+    - wget -q https://courses.cs.washington.edu/courses/cse373/18au/files/hw_scripts/hw5-part1.sh
+    - sh hw5-part1.sh
+  tags:
+    - part1
+
+Part2:
+  stage: test
+  script:
+    - wget -q https://courses.cs.washington.edu/courses/cse373/18au/files/hw_scripts/hw5-part2.sh
+    - sh hw5-part2.sh
+  tags:
+    - part2
